@@ -1,0 +1,57 @@
+{
+  "name": "@technanimals/dev-utils",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.prod.json",
+    "coverage": "jest --coverage true --coverageReporters html --no-cache",
+    "coverage:watch": "jest --watchAll --coverage true --coverageReporters html --no-cache",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest --watch --passWithNoTests --verbose",
+    "test:once": "jest --bail --passWithNoTests",
+    "externalImports": "yarn ts-node scripts/externalImports.ts "
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "lodash.camelcase": "~4.3.0",
+    "lodash.snakecase": "~4.1.1",
+    "lodash.startcase": "~4.4.0"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-secrets-manager": "~3.45.0",
+    "@aws-sdk/client-ssm": "~3.45.0",
+    "@types/jest": "~26.0.23",
+    "@types/lodash.camelcase": "~4.3.6",
+    "@types/lodash.snakecase": "~4.1.6",
+    "@types/lodash.startcase": "~4.4.6",
+    "@types/node": "~16.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.26.1",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "~8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "~24.3.6",
+    "jest": "~27.0.4",
+    "pre-commit": "~1.2.2",
+    "ts-jest": "~27.0.3",
+    "ts-node": "~10.0.0",
+    "tsconfig-paths": "~3.9.0",
+    "ttypescript": "~1.5.12",
+    "typescript": "~4.3.5",
+    "typescript-transform-paths": "~3.0.2"
+  },
+  "peerDependencies": {
+    "@aws-sdk/client-secrets-manager": "^3",
+    "@aws-sdk/client-ssm": "^3"
+  },
+  "pre-commit": [
+    "lint",
+    "test:once",
+    "coverage",
+    "build"
+  ]
+}
